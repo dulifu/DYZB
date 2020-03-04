@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		184BAA882409123200548DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BAA872409123200548DFB /* AppDelegate.swift */; };
-		184BAA8A2409123200548DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BAA892409123200548DFB /* SceneDelegate.swift */; };
 		184BAA8F2409123200548DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184BAA8D2409123200548DFB /* Main.storyboard */; };
 		184BAA912409123400548DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184BAA902409123400548DFB /* Assets.xcassets */; };
 		184BAA942409123400548DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184BAA922409123400548DFB /* LaunchScreen.storyboard */; };
 		184BAA9F2409123400548DFB /* DYZBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BAA9E2409123400548DFB /* DYZBTests.swift */; };
 		184BAAAA2409123400548DFB /* DYZBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BAAA92409123400548DFB /* DYZBUITests.swift */; };
+		18B5540F240F52D6009EEF79 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5540E240F52D6009EEF79 /* Common.swift */; };
 		2F9641BD240EAE52004D2BD8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9641AC240EAE52004D2BD8 /* HomeViewController.swift */; };
 		2F9641BE240EAE52004D2BD8 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9641AF240EAE52004D2BD8 /* FollowViewController.swift */; };
 		2F9641BF240EAE52004D2BD8 /* ProFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9641B2240EAE52004D2BD8 /* ProFileViewController.swift */; };
@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		184BAA842409123200548DFB /* DYZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184BAA872409123200548DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		184BAA892409123200548DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		184BAA8E2409123200548DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		184BAA902409123400548DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		184BAA932409123400548DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		184BAAA52409123400548DFB /* DYZBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DYZBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		184BAAA92409123400548DFB /* DYZBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DYZBUITests.swift; sourceTree = "<group>"; };
 		184BAAAB2409123400548DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18B5540E240F52D6009EEF79 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2F9641AC240EAE52004D2BD8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F9641AF240EAE52004D2BD8 /* FollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
 		2F9641B2240EAE52004D2BD8 /* ProFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProFileViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +113,6 @@
 			children = (
 				2F9641A9240EAE52004D2BD8 /* Class */,
 				184BAA872409123200548DFB /* AppDelegate.swift */,
-				184BAA892409123200548DFB /* SceneDelegate.swift */,
 				184BAA8D2409123200548DFB /* Main.storyboard */,
 				184BAA902409123400548DFB /* Assets.xcassets */,
 				184BAA922409123400548DFB /* LaunchScreen.storyboard */,
@@ -230,6 +229,7 @@
 			children = (
 				2F9641B7240EAE52004D2BD8 /* Extentsion */,
 				2F9641B9240EAE52004D2BD8 /* PageView */,
+				18B5540E240F52D6009EEF79 /* Common.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -454,13 +454,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				184BAA882409123200548DFB /* AppDelegate.swift in Sources */,
-				184BAA8A2409123200548DFB /* SceneDelegate.swift in Sources */,
 				2F9641BF240EAE52004D2BD8 /* ProFileViewController.swift in Sources */,
 				2F9641BD240EAE52004D2BD8 /* HomeViewController.swift in Sources */,
 				2F9641BE240EAE52004D2BD8 /* FollowViewController.swift in Sources */,
 				2F9641C2240EAE52004D2BD8 /* MainTabBarController.swift in Sources */,
 				2F9641CC240EAF3B004D2BD8 /* PageTitleView.swift in Sources */,
 				2F9641C0240EAE52004D2BD8 /* LiveViewController.swift in Sources */,
+				18B5540F240F52D6009EEF79 /* Common.swift in Sources */,
 				2F9641C1240EAE52004D2BD8 /* UIBarButtonItem_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
