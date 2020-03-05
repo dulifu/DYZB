@@ -16,6 +16,9 @@ class PageContentView: UIView {
     private var childVCs: [UIViewController]
     private weak var parentVC: UIViewController?
     
+    ///初始offset
+    private var startOffset: CGFloat = 0
+    
     //MARK: -懒加载collectionView
     private lazy var collectionView: UICollectionView = {[weak self] in
         let layout = UICollectionViewFlowLayout()
@@ -64,6 +67,7 @@ extension PageContentView {
     }
 }
 
+//MARK: -遵循UICollectionViewDataSource
 extension PageContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVCs.count
@@ -76,6 +80,35 @@ extension PageContentView: UICollectionViewDataSource {
         childVC.view.frame = cell.contentView.bounds
         return cell
     }
+}
+
+//MARK: -遵循
+extension PageContentView: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startOffset = scrollView.contentOffset.x
+    }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var progress: CGFloat = 0
+        var sourceIndex: Int = 0
+        var targetIndex: Int = 0
+        
+        let currentOffsetX = scrollView.contentOffset.x
+        let scrollWidth = scrollView.frame.width
+        if currentOffsetX > startOffset {//左滑
+            progress = currentOffsetX / scrollWidth - floor(currentOffsetX / scrollWidth)
+            sourceIndex = Int(currentOffsetX / scrollWidth)
+            targetIndex = (sourceIndex + 1 < childVCs.count) ? sourceIndex + 1 : childVCs.count - 1
+        } else {//右滑
+            progress = 1 - (currentOffsetX / scrollWidth - floor(currentOffsetX / scrollWidth))
+        }
+    }
+}
+
+//MARK: -对外暴露的方法
+extension PageContentView {
+    func setCurrentIndex(currentIndex: Int)  {
+        let offsetX = CGFloat(currentIndex) * frame.width
+        collectionView .setContentOffset(CGPoint(x: offsetX, y: 0), animated: false)
+    }
 }

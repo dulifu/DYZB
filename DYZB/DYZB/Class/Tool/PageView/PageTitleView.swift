@@ -10,12 +10,22 @@ import UIKit
 
 private let kScrollLineH: CGFloat = 2
 
+//MARK: -添加协议（class代表协议只能被类遵守）
+protocol PageTitleViewDelegate: class {
+    func pageTitleView(titleView: PageTitleView, index: Int)
+}
+
 class PageTitleView: UIView {
     //title
     private let titles: [String]
     
-    //
+    //label数组
     lazy private var titleLabels: [UILabel] = [UILabel]()
+    
+    ///当前下标
+    private var currentIndex = 0
+    
+    weak var delegate: PageTitleViewDelegate?
        
     //懒加载scrollView
     lazy private var scrollView: UIScrollView = { [weak self] in
@@ -72,10 +82,14 @@ extension PageTitleView {
             label.textColor = .darkGray
             label.textAlignment = NSTextAlignment.center
             label.text = title
+            label.tag = index
             
             let labelX = labelW * CGFloat(index)
 
             label.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
+            label.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelClick(tapGes:)))
+            label.addGestureRecognizer(tapGesture)
             scrollView.addSubview(label)
             titleLabels.append(label)
         }
@@ -101,3 +115,32 @@ extension PageTitleView {
         
     }
 }
+
+//MARK: -label点击事件
+extension PageTitleView {
+    @objc func labelClick(tapGes: UIGestureRecognizer) {
+        //设置新的label
+        guard let currentLabel = tapGes.view as? UILabel else {
+            return
+        }
+        currentLabel.textColor = .orange
+        
+        //重置旧的label
+        let oldLabel = titleLabels[currentIndex]
+        oldLabel.textColor = .lightGray
+        
+        //设置currentIndex
+        currentIndex = currentLabel.tag
+        
+        //设置滚动条
+        let scrollLineX = CGFloat(currentIndex) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.15) {
+            self.scrollLine.frame.origin.x = scrollLineX
+        }
+        
+        //调用代理来让下方contentView滚动
+        delegate?.pageTitleView(titleView: self, index: currentIndex)
+    }
+}
+
+
