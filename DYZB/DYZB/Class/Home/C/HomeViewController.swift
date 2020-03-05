@@ -11,12 +11,37 @@ import UIKit
 let kTitleViewH: CGFloat = 40
 
 class HomeViewController: UIViewController {
-    //MARK: -懒加载属性
+    
+    //MARK: -懒加载pageTitleView
     lazy var pageTitleView: PageTitleView = {
         let frame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = PageTitleView.init(frame: frame, titles: titles)
         return titleView
+    }()
+    
+    //MARK: -懒加载pageContentView
+    lazy var pageContentView: PageContentView = { [weak self] in
+        let originY = kStatusBarH + kNavigationBarH + kTitleViewH
+        
+        let frame = CGRect(x: 0, y: originY, width: kScreenW, height: kScreenH - originY - kTabBarH)
+        var childVCs = [UIViewController]()
+        for i in 0...3 {
+            let controller = UIViewController()
+            if i == 0 {
+                controller.view.backgroundColor = .red
+            } else if i == 1 {
+                controller.view.backgroundColor = .green
+            } else if i == 2 {
+                controller.view.backgroundColor = .blue
+            } else {
+                controller.view.backgroundColor = .purple
+            }
+            childVCs.append(controller)
+        }
+        
+        let contentView = PageContentView(frame: frame, childViewControllers: childVCs, parentViewController: self)
+        return contentView
     }()
     
     //MARK: -系统方法
@@ -40,6 +65,9 @@ extension HomeViewController {
         
         //添加titleView
         view.addSubview(pageTitleView)
+        
+        //添加contentView
+        view.addSubview(pageContentView)
     }
     
     //设置导航栏
@@ -64,9 +92,5 @@ extension HomeViewController {
         let qrcodeItem = UIBarButtonItem(imageName: "Image_scan", highImageName: "Image_scan_click", size: size)
         let searchItem = UIBarButtonItem(imageName: "btn_search", highImageName: "btn_search_clicked", size: size)
         self.navigationItem.rightBarButtonItems = [historyItem, searchItem, qrcodeItem]
-        
-        
     }
-    
-    
 }

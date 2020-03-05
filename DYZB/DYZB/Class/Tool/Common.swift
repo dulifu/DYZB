@@ -14,6 +14,10 @@ let kNavigationBarH: CGFloat = 44.0
 
 ///状态栏高度
 let kStatusBarH = UIApplication.shared.statusBarFrame.height
+///X以上底部空白
+let kDeviceBottomH:CGFloat = UIApplication.shared.statusBarFrame.height > 20 ? 34 : 0
+///TabBar高度
+let kTabBarH:CGFloat = UIApplication.shared.statusBarFrame.height > 20 ? 49 + kDeviceBottomH : 49
 ///屏幕宽高
 let kScreenW = UIScreen.main.bounds.width
 let kScreenH = UIScreen.main.bounds.height

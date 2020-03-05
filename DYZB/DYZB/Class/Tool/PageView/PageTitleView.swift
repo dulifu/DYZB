@@ -18,9 +18,9 @@ class PageTitleView: UIView {
     lazy private var titleLabels: [UILabel] = [UILabel]()
        
     //懒加载scrollView
-    lazy private var scrollView: UIScrollView = {
+    lazy private var scrollView: UIScrollView = { [weak self] in
         let scroll = UIScrollView()
-        scroll.frame = self.bounds
+        scroll.frame = (self?.bounds)!
         scroll.showsVerticalScrollIndicator = false
         scroll.showsHorizontalScrollIndicator = false
         scroll.scrollsToTop = false
