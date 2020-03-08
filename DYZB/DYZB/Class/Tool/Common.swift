@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 ///导航栏高度(一定要添加CGFloat类型，否则44.0赋值默认是double类型）

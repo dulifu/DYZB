@@ -27,16 +27,16 @@ class HomeViewController: UIViewController {
         
         let frame = CGRect(x: 0, y: originY, width: kScreenW, height: kScreenH - originY - kTabBarH)
         var childVCs = [UIViewController]()
-        for i in 0...3 {
+        let recomendContoller = RecommandViewController()
+        childVCs .append(recomendContoller)
+        for i in 0...2 {
             let controller = UIViewController()
             if i == 0 {
                 controller.view.backgroundColor = .red
             } else if i == 1 {
                 controller.view.backgroundColor = .green
-            } else if i == 2 {
-                controller.view.backgroundColor = .blue
             } else {
-                controller.view.backgroundColor = .purple
+                controller.view.backgroundColor = .blue
             }
             childVCs.append(controller)
         }
