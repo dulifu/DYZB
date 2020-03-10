@@ -55,7 +55,8 @@ extension RecommandCollectionHeaderView {
         
         //3.更多按钮
         moreButton = UIButton(type: .custom)
-        moreButton .setTitle("更多", for: .normal)
+        moreButton.setTitleColor(UIColor.red, for: .normal)
+        moreButton.setTitle("更多", for: .normal)
         addSubview(moreButton)
         
         moreButton.snp.makeConstraints { (make) in
