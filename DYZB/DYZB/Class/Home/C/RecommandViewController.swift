@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 private let cellMargin:CGFloat = 10
 private let itemWidth:CGFloat = (kScreenW - 3 * cellMargin)/2
@@ -25,16 +26,16 @@ class RecommandViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 10
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.sectionInset = UIEdgeInsets(top: 0, left: cellMargin, bottom: 0, right: cellMargin)
         layout.headerReferenceSize = CGSize(width: kScreenW, height: sectionHeaderH)
         
         //2.创建collectionview
         let collectionView = UICollectionView(frame: (self?.view)!.bounds, collectionViewLayout: layout)
         collectionView.dataSource = self
+        collectionView.delegate = self;
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .purple
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kNormalCellID)
+        collectionView.register(NormalCollectionViewCell.self, forCellWithReuseIdentifier: kNormalCellID)
         collectionView.register(RecommandCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: kSectionHeaderID)
         
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -56,6 +57,12 @@ class RecommandViewController: UIViewController {
 extension RecommandViewController {
     private func setupUI() {
         view.addSubview(collectionView)
+        AF.request("http://httpbin.org").response { response in
+            print(response)
+        }
+        AF.request("http://httpbin.org", method: .post, parameters: nil).response { response in
+            print
+        }
     }
 }
 
@@ -73,8 +80,9 @@ extension RecommandViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:kNormalCellID, for: indexPath)
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier:kNormalCellID, for: indexPath) as! NormalCollectionViewCell
         cell.backgroundColor = .red
+        cell.topImgView.layer.backgroundColor = UIColor.green.cgColor
         return cell
     }
     
@@ -86,4 +94,10 @@ extension RecommandViewController: UICollectionViewDataSource {
             return header
     }
     
+}
+
+extension RecommandViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
 }

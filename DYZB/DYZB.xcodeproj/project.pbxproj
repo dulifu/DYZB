@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,9 @@
 		184BAAAA2409123400548DFB /* DYZBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184BAAA92409123400548DFB /* DYZBUITests.swift */; };
 		186590772410943A00C09C07 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186590762410943A00C09C07 /* PageContentView.swift */; };
 		186590792410A45600C09C07 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186590782410A45600C09C07 /* UIColor-Extension.swift */; };
+		186847E7241742AC00219B41 /* NormalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186847E6241742AC00219B41 /* NormalCollectionViewCell.swift */; };
 		18B5540F240F52D6009EEF79 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5540E240F52D6009EEF79 /* Common.swift */; };
+		18C265DC2418A529005BC01E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C265DB2418A529005BC01E /* NetworkManager.swift */; };
 		2F61F28A2415338B00358A73 /* RecommandCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F61F2892415338B00358A73 /* RecommandCollectionHeaderView.swift */; };
 		2F6746EB2414D238009D46BE /* RecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6746EA2414D238009D46BE /* RecommandViewController.swift */; };
 		2F9641BD240EAE52004D2BD8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9641AC240EAE52004D2BD8 /* HomeViewController.swift */; };
@@ -63,7 +65,9 @@
 		184BAAAB2409123400548DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186590762410943A00C09C07 /* PageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
 		186590782410A45600C09C07 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		186847E6241742AC00219B41 /* NormalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCollectionViewCell.swift; sourceTree = "<group>"; };
 		18B5540E240F52D6009EEF79 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		18C265DB2418A529005BC01E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2F61F2892415338B00358A73 /* RecommandCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandCollectionHeaderView.swift; sourceTree = "<group>"; };
 		2F6746EA2414D238009D46BE /* RecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandViewController.swift; sourceTree = "<group>"; };
 		2F9641AC240EAE52004D2BD8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,22 @@
 			path = DYZBUITests;
 			sourceTree = "<group>";
 		};
+		186847E52417428E00219B41 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				186847E6241742AC00219B41 /* NormalCollectionViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		18C265DA2418A50D005BC01E /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				18C265DB2418A529005BC01E /* NetworkManager.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
 		215370D157C117AF2C53D92D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +285,8 @@
 		2F9641B6240EAE52004D2BD8 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				18C265DA2418A50D005BC01E /* NetWork */,
+				186847E52417428E00219B41 /* CustomCell */,
 				2F9641B7240EAE52004D2BD8 /* Extentsion */,
 				2F9641B9240EAE52004D2BD8 /* PageView */,
 				18B5540E240F52D6009EEF79 /* Common.swift */,
@@ -375,7 +397,6 @@
 				3B927A2B4E1B240807EB0908 /* Pods-DYZB-DYZBUITests.debug.xcconfig */,
 				787DD756F94B0E8858CC64BA /* Pods-DYZB-DYZBUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -603,6 +624,7 @@
 				184BAA882409123200548DFB /* AppDelegate.swift in Sources */,
 				2F6746EB2414D238009D46BE /* RecommandViewController.swift in Sources */,
 				2F9641BF240EAE52004D2BD8 /* ProFileViewController.swift in Sources */,
+				186847E7241742AC00219B41 /* NormalCollectionViewCell.swift in Sources */,
 				2F9641BD240EAE52004D2BD8 /* HomeViewController.swift in Sources */,
 				186590772410943A00C09C07 /* PageContentView.swift in Sources */,
 				2F9641BE240EAE52004D2BD8 /* FollowViewController.swift in Sources */,
@@ -611,6 +633,7 @@
 				2F9641C0240EAE52004D2BD8 /* LiveViewController.swift in Sources */,
 				2F61F28A2415338B00358A73 /* RecommandCollectionHeaderView.swift in Sources */,
 				18B5540F240F52D6009EEF79 /* Common.swift in Sources */,
+				18C265DC2418A529005BC01E /* NetworkManager.swift in Sources */,
 				2F9641C1240EAE52004D2BD8 /* UIBarButtonItem_Extension.swift in Sources */,
 				186590792410A45600C09C07 /* UIColor-Extension.swift in Sources */,
 			);
